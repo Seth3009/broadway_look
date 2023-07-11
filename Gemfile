@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'paperclip', '~> 6.1'
 
 
 gem 'bootsnap', '>= 1.1.0', require: false
