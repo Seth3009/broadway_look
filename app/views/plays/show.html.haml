@@ -1,7 +1,8 @@
 %h2= @play.title
 %h3= @play.director
+%h4= @play.category.name
 %p= @play.description
 
-- if user_signed_in? && @play.user_id == current_user_id
+- if user_signed_in? && @play.user_id == current_user.id
   = link_to "Edit", edit_play_path(@play)
   = link_to "Delete", @play,method: :delete, data: {:confirm => "Are you sure?"}

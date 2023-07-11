@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'haml'
 gem 'simple_form'
+gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'devise'
 
