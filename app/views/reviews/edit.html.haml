@@ -1,0 +1,8 @@
+.col-md-10.col-md-offset-1
+  .edit-review-form
+    %h1 Edit Review
+    = simple_form_for [@play, @review] do |f|
+      #rating-form
+        = f.input :rating
+      = f.input :comment
+      = f.button :submit, class: "btn-custom2"

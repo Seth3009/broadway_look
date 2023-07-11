@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
-  before_action :set_play, only: [:new, :create]
+  before_action :set_play
+  before_action :set_review, only: [:edit, :update, :destroy]
+
   def new
     @review = Review.new
   end
@@ -16,6 +18,23 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    if @review.update(review_params)
+      redirect_to @play
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @review.destroy
+    redirect_to @play
+  end
+
   private
     def review_params
       params.require(:review).permit(:rating, :comment)
@@ -23,5 +42,9 @@ class ReviewsController < ApplicationController
 
     def set_play
       @play = Play.find(params[:play_id])
+    end
+
+    def set_review
+      @review = Review.find(params[:id])
     end
 end
