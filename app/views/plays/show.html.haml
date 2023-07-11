@@ -7,6 +7,9 @@
       %h3.play-director
         %span= "From: #{@play.director}"
       %h4.play-director=@play.category.name
+      %h4.avg-rating Average Rating
+      .average-review-rating{data: {score: @average_review}}
+      %span.number-of-reviews= "From: #{@play.reviews.count} reviews"
       %p.play-desc= @play.description
 
 .row
@@ -20,3 +23,22 @@
   - if user_signed_in? && @play.user_id == current_user.id
     = link_to "Edit", edit_play_path(@play), :class => "btn btn-custom"
     = link_to "Delete", @play,method: :delete, data: {:confirm => "Are you sure?"}, :class => "btn btn-custom"
+
+:javascript
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+
+
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+      
+  })

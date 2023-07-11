@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_play
   before_action :set_review, only: [:edit, :update, :destroy]
 

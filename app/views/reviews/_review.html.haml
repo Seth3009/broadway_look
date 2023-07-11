@@ -1,5 +1,6 @@
 .review
-  %p= review.rating
+  .review-rating{data: {score: review.rating}}
+    
   %p.review-comment= review.comment
   - if user_signed_in? && review.user_id == current_user.id
     .links.btn-group
