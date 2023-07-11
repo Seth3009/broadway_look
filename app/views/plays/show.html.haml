@@ -2,6 +2,6 @@
 %h3= @play.director
 %p= @play.description
 
-= link_to "Back", plays_path
-= link_to "Edit", edit_play_path(@play)
-= link_to "Delete", @play,method: :delete, data: {:confirm => "Are you sure?"}
+- if user_signed_in? && @play.user_id == current_user_id
+  = link_to "Edit", edit_play_path(@play)
+  = link_to "Delete", @play,method: :delete, data: {:confirm => "Are you sure?"}
