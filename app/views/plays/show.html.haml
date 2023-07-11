@@ -1,8 +1,14 @@
-%h2= @play.title
-%h3= @play.director
-%h4= @play.category.name
-%p= @play.description
-
-- if user_signed_in? && @play.user_id == current_user.id
-  = link_to "Edit", edit_play_path(@play)
-  = link_to "Delete", @play,method: :delete, data: {:confirm => "Are you sure?"}
+.row
+  .col-md-4
+    = image_tag @play.play_img.url(:play_show), class: "play-show"
+  .col-md-8
+    .play-info
+      %h2.play-title= @play.title
+      %h3.play-director
+        %span= "From #{@play.director}"
+      %h4.play-director=@play.category.name
+      %p.play-desc= @play.description
+.links.btn-group
+  - if user_signed_in? && @play.user_id == current_user.id
+    = link_to "Edit", edit_play_path(@play), :class => "btn btn-custom"
+    = link_to "Delete", @play,method: :delete, data: {:confirm => "Are you sure?"}, :class => "btn btn-custom"
