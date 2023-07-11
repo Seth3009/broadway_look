@@ -8,6 +8,14 @@
         %span= "From: #{@play.director}"
       %h4.play-director=@play.category.name
       %p.play-desc= @play.description
+
+.row
+  .col-md-12
+    .reviews
+      %h1 Reviews
+      = render @play.reviews
+      %div
+        = link_to "Add Review", new_play_review_path(@play), class: "btn-custom"
 .links.btn-group
   - if user_signed_in? && @play.user_id == current_user.id
     = link_to "Edit", edit_play_path(@play), :class => "btn btn-custom"
